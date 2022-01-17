@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ChatProvider } from './context/ChatContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ChatProvider>
+      <App />
+    </ChatProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
