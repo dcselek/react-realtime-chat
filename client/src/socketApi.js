@@ -15,3 +15,12 @@ export const init = () => {
 export const sendMessages = (message) => {
 	if (socket) socket.emit("new-message", message)
 }
+
+export const subscribeChat = (cb) => {
+	if (!socket) return;
+
+	socket.on("receive-message",(message) => {
+		console.log("Yeni mesajınız var!")
+		cb(message);
+	})
+}
