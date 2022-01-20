@@ -2,16 +2,17 @@ import React from 'react'
 import { useFormik } from 'formik'
 import styles from './styles.module.css'
 import { sendMessages } from '../socketApi'
+import { useChat } from '../context/ChatContext'
 
 function ChatForm() {
-
+    const { setMessages } = useChat()
     const { values, handleSubmit, handleChange, resetForm } = useFormik({
         initialValues: {
             message: "",
         },
         onSubmit: (values) => {
-            console.log(values.message)
             sendMessages(values.message)
+            setMessages((prevState) => [...prevState, { message: values.message }])
             resetForm(values.message = "")
         },
     })
