@@ -12,7 +12,7 @@ function ChatForm() {
         },
         onSubmit: (values) => {
             sendMessages(values.message)
-            setMessages((prevState) => [...prevState, { message: values.message }])
+            setMessages((prevState) => [...prevState, { message: values.message, fromMe: true }])
             resetForm(values.message = "")
         },
     })
