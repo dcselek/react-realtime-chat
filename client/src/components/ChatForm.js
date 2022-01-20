@@ -1,6 +1,7 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import styles from './styles.module.css'
+import { sendMessages } from '../socketApi'
 
 function ChatForm() {
 
@@ -10,6 +11,7 @@ function ChatForm() {
         },
         onSubmit: (values) => {
             console.log(values.message)
+            sendMessages(values.message)
             resetForm(values.message = "")
         },
     })
