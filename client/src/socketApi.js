@@ -19,8 +19,17 @@ export const sendMessages = (message) => {
 export const subscribeChat = (cb) => {
 	if (!socket) return;
 
-	socket.on("receive-message",(message) => {
+	socket.on("receive-message", (message) => {
 		console.log("Yeni mesajınız var!")
 		cb(message);
+	})
+}
+
+export const subscribeMessageList = (cb) => {
+	if (!socket) return;
+
+	socket.on("message-list", (message) => {
+		console.log("initial", message)
+		cb(message)
 	})
 }
