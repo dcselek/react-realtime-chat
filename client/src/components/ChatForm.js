@@ -11,9 +11,13 @@ function ChatForm() {
             message: "",
         },
         onSubmit: (values) => {
-            sendMessages(values.message)
-            setMessages((prevState) => [...prevState, { message: values.message, fromMe: true }])
-            resetForm(values.message = "")
+            if (values.message !== "") {
+                sendMessages(values.message)
+                setMessages((prevState) => [...prevState, { message: values.message, fromMe: true }])
+                resetForm(values.message = "")
+            }else{
+                alert("boş mesaj gönderilemez!")
+            }
         },
     })
     return (
